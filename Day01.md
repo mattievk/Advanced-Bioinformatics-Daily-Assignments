@@ -16,8 +16,9 @@ ORDER BY quantity DESC;
 
 ##Two tables containing mutiple columns for both the samples and the mutations. 
 '''sql  
-CREATE TABLE mutations  
+CREATE TABLE Mutations  
 (  
+MutationID int,
 ChrNumber int,  
 ChrPosition int,  
 MutationType varchar(255),  
@@ -27,12 +28,14 @@ GeneLocation varchar(255),
 Protein varchar(255)  
 );  
 
-CREATE TABLE samples  
+CREATE TABLE Samples  
 (  
 sampleID int,  
 Age int,  
 Gender varchar(6),  
 Disease varchar(255),  
-AssociatedGenes varchar(255)  
+AssociatedGenes varchar(255),
+PRIMARY KEY (SampleID)
+FOREIGN KEY (MutationID) REFERENCES Samples(SampleID)
 );  
 '''  

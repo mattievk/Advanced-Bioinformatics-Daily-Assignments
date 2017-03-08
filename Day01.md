@@ -18,7 +18,7 @@ ORDER BY quantity DESC;
 '''sql  
 CREATE TABLE Mutations  
 (  
-MutationID int,
+MutationID int,  
 ChrNumber int,  
 ChrPosition int,  
 MutationType varchar(255),  
@@ -35,7 +35,7 @@ Age int,
 Gender varchar(6),  
 Disease varchar(255),  
 AssociatedGenes varchar(255),
-PRIMARY KEY (SampleID)
-FOREIGN KEY (MutationID) REFERENCES Samples(SampleID)
+PRIMARY KEY (SampleID)  
+FOREIGN KEY (MutationID) REFERENCES Samples(SampleID)  
 );  
 '''  

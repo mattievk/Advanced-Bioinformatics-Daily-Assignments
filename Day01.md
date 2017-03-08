@@ -34,7 +34,7 @@ sampleID int,
 Age int,  
 Gender varchar(6),  
 Disease varchar(255),  
-AssociatedGenes varchar(255),
+AssociatedGenes varchar(255),  
 PRIMARY KEY (SampleID)  
 FOREIGN KEY (MutationID) REFERENCES Samples(SampleID)  
 );  

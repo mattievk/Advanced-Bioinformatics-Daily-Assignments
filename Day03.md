@@ -16,8 +16,7 @@ id = ['chr'+rec.chr,rec.pos,rec.ref,rec.alt].join('_')
   :pos <%= rec.pos %> .  
 
 ## Creating the RDF file from the PIK3CA.vcf with the RDF template:
-cat gene_PIK3CA.vcf | bio-vcf -v --template rdf_template2.erb --num-threads 2 > PIK3CA.rdf  
-
+cat gene_PIK3CA.vcf | bio-vcf -v --template PIK3CA_template2.erb > PIK3CA.rdf
 ## Then uploading it to the guix.genenetwork (rapper not working on local machine, so I skipped that part)
 rdf=PIK3CA.rdf  
 uri=http://guix.genenetwork.org/data/http://matthijs2.org/data/$rdf  
@@ -32,11 +31,11 @@ host = "http://guix.genenetwork.org/"
 query = """  
 PREFIX : <http://matthijs2.org/rdf/ns#>  
 SELECT * {    
-    ?s :chr "X" .  
-    ?s :alt ?alt .  
-    ?s :pos ?pos .  
-    FILTER (?pos > 169000000) .  
-}   
+    ?id :chr "X" .  
+    ?id :alt ?alt .  
+    ?id :pos ?pos .  
+    FILTER (?pos > 169000000) .  
+}   
 """  
 r = requests.post(host + "sparql/", data={ "query": query, "output": "text" })  
 if r.status_code != requests.codes.ok:  
